@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StarEvents - Event Planning</title>
+    <meta
+      name="description"
+      content="Creative event planning and seamless coordination for weddings, parties, and corporate events. Turning your vision into unforgettable experiences with expert design and flawless execution."
+    />
+
+    <title>Restaurant Landing Page</title>
+    <meta property="og:title" content="Event Planning Landing Page" />
+    <meta
+      property="og:description"
+      content="Expert event planning for weddings, parties, and corporate gatherings. We create unforgettable experiences through seamless coordination, inspired design, and flawless execution."
+    />
+
+    <meta
+      property="og:image"
+      content="https://masud73.github.io/event-planner/assets/images/hero.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:url"
+      content="https://masud73.github.io/event-planner/"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
+  </head>
+  <body class="font-sans text-gray-800">
+    <!-- ================= COMPONENT HOOKS ================= -->
+    <div id="header"></div>
+    <div id="hero"></div>
+    <div id="about"></div>
+    <div id="services"></div>
+    <div id="events"></div>
+    <div id="pricing"></div>
+    <div id="faqs"></div>
+    <div id="contact"></div>
+    <div id="footer"></div>
+
+    <script>
+      /*
+  include loader: loads components in order, executes inline scripts found in fetched HTML,
+  then dispatches "includesLoaded" event when done.
+*/
+      async function includeHTML(id, file) {
+        const container = document.getElementById(id);
+        if (!container) {
+          console.warn(`includeHTML: container #${id} not found`);
+          return;
+        }
+
+        try {
+          const res = await fetch(file, { cache: "no-cache" }); // no-cache helps while developing
+          if (!res.ok)
+            throw new Error(
+              `Failed to fetch ${file}: ${res.status} ${res.statusText}`
+            );
+          const html = await res.text();
+
+          container.innerHTML = html;
+
+          // Execute any inline <script> tags inside the fetched HTML
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = html;
+          const scripts = wrapper.querySelectorAll("script");
+          scripts.forEach((oldScript) => {
+            const script = document.createElement("script");
+            if (oldScript.src) {
+              script.src = oldScript.src;
+              script.async = false; // preserve execution order
+            } else {
+              script.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(script);
+          });
+        } catch (err) {
+          console.error("includeHTML error for", id, file, err);
+          throw err;
+        }
+      }
+
+      async function loadAllIncludes() {
+        const includes = [
+          ["header", "components/header.html"],
+          ["hero", "components/hero.html"],
+          ["about", "components/about.html"],
+          ["services", "components/services.html"],
+          ["events", "components/events.html"],
+          ["pricing", "components/pricing.html"],
+          ["faqs", "components/faqs.html"],
+          ["contact", "components/contact.html"],
+          ["footer", "components/footer.html"],
+        ];
+
+        for (const [id, file] of includes) {
+          await includeHTML(id, file);
+        }
+        // signal to other scripts that includes are in place
+        document.dispatchEvent(new Event("includesLoaded"));
+      }
+
+      loadAllIncludes().catch((err) =>
+        console.error("loadAllIncludes failed", err)
+      );
+    </script>
+
+    <!-- JS for mobile menu -->
+    <script>
+      document.addEventListener("includesLoaded", function () {
+        const header = document.getElementById("site-header");
+        const menuBtn = document.getElementById("menu-btn");
+        const menuWrapper = document.getElementById("menu-wrapper");
+        const backdrop = document.getElementById("menu-backdrop");
+        const menuPanel = document.getElementById("menu-panel");
+
+        if (!header || !menuBtn || !menuWrapper || !backdrop || !menuPanel) {
+          console.warn("Menu: missing required elements (check IDs).");
+          return;
+        }
+
+        const mobileLinks = menuPanel.querySelectorAll(".mobile-link");
+        let menuOpen = false;
+
+        // Set backdrop & panel top offsets so they sit below the header
+        function setTopOffsets() {
+          const headerH = header.offsetHeight;
+          backdrop.style.top = headerH + "px";
+          menuPanel.style.top = headerH + "px";
+
+          // if closed, ensure collapsed maxHeight
+          if (!menuOpen) menuPanel.style.maxHeight = "0px";
+        }
+
+        // initial offsets + on resize (debounced)
+        setTopOffsets();
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(setTopOffsets, 120);
+        });
+
+        function openMenu() {
+          menuWrapper.classList.remove("pointer-events-none");
+          backdrop.classList.remove("opacity-0");
+          backdrop.classList.add("opacity-100");
+
+          // compute open height (cap to viewport to avoid overflow)
+          const targetH = Math.min(
+            menuPanel.scrollHeight,
+            window.innerHeight - header.offsetHeight - 20
+          );
+          menuPanel.style.maxHeight = targetH + "px";
+
+          menuOpen = true;
+          menuBtn.setAttribute("aria-expanded", "true");
+          menuBtn.innerHTML = ` <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 22 22"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>`;
+        }
+
+        function closeMenu() {
+          backdrop.classList.add("opacity-0");
+          backdrop.classList.remove("opacity-100");
+
+          menuPanel.style.maxHeight = "0px";
+
+          // after animation ends, disable interactions so underlying page is clickable
+          setTimeout(() => {
+            menuWrapper.classList.add("pointer-events-none");
+          }, 300);
+
+          menuOpen = false;
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuBtn.innerHTML = `<span class="block w-6 h-0.5 bg-primary"></span>
+          <span class="block w-6 h-0.5 bg-primary"></span>
+          <span class="block w-6 h-0.5 bg-primary"></span>`;
+        }
+
+        menuBtn.addEventListener("click", (e) => {
+          menuOpen ? closeMenu() : openMenu();
+        });
+        backdrop.addEventListener("click", closeMenu);
+        mobileLinks.forEach((link) =>
+          link.addEventListener("click", closeMenu)
+        );
+      });
+    </script>
+
+    <script>
+      // Run after all includes are injected
+      document.addEventListener("includesLoaded", () => {
+        const reveals = document.querySelectorAll(".reveal");
+
+        if (reveals.length === 0) {
+          console.warn(
+            "[reveal] no elements with .reveal found after includesLoaded"
+          );
+          return;
+        }
+
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate-slide-up");
+                entry.target.classList.remove("opacity-0", "translate-y-10");
+                obs.unobserve(entry.target); // only once
+              }
+            });
+          },
+          { threshold: 0, rootMargin: "0px 0px -5% 0px" }
+        );
+
+        reveals.forEach((el) => io.observe(el));
+      });
+    </script>
+  </body>
+</html>

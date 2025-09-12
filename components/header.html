@@ -1,0 +1,93 @@
+<!-- HEADER -->
+<header id="site-header" class="sticky left-0 top-0 bg-white shadow z-50">
+  <div
+    class="w-full bg-white/80 backdrop-blur shadow fixed top-0 z-51 flex items-center justify-between p-4 px-5 md:px-16"
+  >
+    <h1 class="text-2xl font-bold text-primary">StarEvents</h1>
+    <nav class="hidden md:flex gap-6 text-primary">
+      <a
+        href="#"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >Home</a
+      >
+      <a
+        href="#about"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >About</a
+      >
+      <a
+        href="#services"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >Services</a
+      >
+      <a
+        href="#portfolio"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >Portfolio</a
+      >
+      <a
+        href="#pricing"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >Pricing</a
+      >
+      <a
+        href="#contact"
+        class="transition-colors duration-300 ease-in-out hover:text-accent font-medium"
+        >Contact</a
+      >
+    </nav>
+    <button
+      id="menu-btn"
+      class="md:hidden flex z-50 text-primary flex-col gap-1"
+    >
+      <span class="block w-6 h-0.5 bg-primary"></span>
+      <span class="block w-6 h-0.5 bg-primary"></span>
+      <span class="block w-6 h-0.5 bg-primary"></span>
+    </button>
+  </div>
+  <!-- MOBILE MENU WRAPPER -->
+  <div
+    id="menu-wrapper"
+    class="fixed inset-0 z-40 md:hidden pointer-events-none"
+  >
+    <!-- Backdrop -->
+    <div
+      id="menu-backdrop"
+      class="absolute left-0 right-0 bottom-0 bg-black/40 opacity-0 transition-opacity duration-300"
+    ></div>
+
+    <!-- Menu Panel -->
+    <div
+      id="menu-panel"
+      class="absolute mt-8 right-0 w-full max-h-0 overflow-hidden bg-white transition-all duration-300 shadow"
+    >
+      <nav class="flex flex-col px-4 pb-4 text-primary">
+        <a
+          href="#about"
+          class="py-2 mobile-link hover:text-accent transition-colors duration-300 ease-in-out"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="py-2 mobile-link hover:text-accent transition-colors duration-300 ease-in-out"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="py-2 mobile-link hover:text-accent transition-colors duration-300 ease-in-out"
+          >Portfolio</a
+        >
+        <a
+          href="#pricing"
+          class="py-2 mobile-link hover:text-accent transition-colors duration-300 ease-in-out"
+          >Pricing</a
+        >
+        <a
+          href="#contact"
+          class="py-2 pb-0 mobile-link hover:text-accent transition-colors duration-300 ease-in-out"
+          >Contact</a
+        >
+      </nav>
+    </div>
+  </div>
+</header>

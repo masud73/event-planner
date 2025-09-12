@@ -1,0 +1,61 @@
+<!-- HERO -->
+<section class="relative bg-primary text-white overflow-hidden pt-4">
+  <!-- Background image -->
+  <img
+    src="/event-planner/assets/images/hero.jpg"
+    alt="Event background"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Content -->
+  <div class="relative max-w-5xl mx-auto px-6 py-35 text-center">
+    <!-- Small heading -->
+    <p class="uppercase tracking-widest text-accent font-semibold mb-3">
+      Your Perfect Occasion
+    </p>
+    <!-- Main heading -->
+    <h1
+      class="reveal text-4xl md:text-6xl font-extrabold text-neutral mb-6 leading-tight"
+    >
+      We Make Every Event Truly Unforgettable
+    </h1>
+    <!-- Description -->
+    <p class="text-lg md:text-xl text-neutral leading-8 mb-8 max-w-2xl mx-auto">
+      Weddings, parties, conferences — whatever your vision, our expert planners
+      and creative designers will bring it to life.
+    </p>
+    <!-- CTA -->
+    <a
+      id="hero-btn"
+      href="#contact"
+      class="inline-block transition-colors duration-300 ease-in-out bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary/70"
+    >
+      Start Planning Today
+    </a>
+  </div>
+
+  <svg
+    class="absolute bottom-0 w-full h-16 text-white block"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+  >
+    <path
+      fill="currentColor"
+      d="M0,224L48,218.7C96,213,192,203,288,176C384,149,480,107,576,106.7C672,107,768,149,864,176C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96V320H0Z"
+    ></path>
+  </svg>
+</section>
+
+<script>
+  const heroBtn = document.getElementById("hero-btn");
+  heroBtn.addEventListener("touchstart", (e) => {
+    e.target.classList.add("bg-primary/70");
+  });
+
+  heroBtn.addEventListener("touchend", (e) => {
+    e.target.classList.remove("bg-primary/70");
+  });
+</script>
