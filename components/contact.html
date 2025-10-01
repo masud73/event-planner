@@ -1,83 +1,95 @@
 <!-- CONTACT -->
 <section
   id="contact"
-  class="relative z-1 bg-gradient-to-r from-primary to-accent text-white py-10 md:py-16 overflow-hidden"
+  class="relative bg-gradient-to-b from-primary to-accent text-white py-20 overflow-hidden"
 >
-  <!-- Accent Shapes -->
+  <!-- Accent Glow -->
   <div
-    class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+    class="absolute -top-32 -right-32 w-72 h-72 bg-white/10 rounded-full blur-3xl"
   ></div>
   <div
-    class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"
+    class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl"
   ></div>
 
   <div class="relative max-w-6xl mx-auto px-6">
     <!-- Heading -->
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
         Let's Make It Happen
       </h2>
       <p class="text-lg text-gray-200">
-        Have an idea for your next big event? Fill in the form or reach out to
-        us directly.
+        Share your vision with us — we'll help craft an unforgettable
+        experience.
       </p>
     </div>
 
-    <!-- Content -->
-    <div class="grid md:grid-cols-2 gap-10 overflow-hidden py-4">
-      <!-- Contact Card -->
-      <div
-        class="reveal bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-5 md:p-8"
-      >
-        <form class="space-y-5">
+    <!-- Content Grid -->
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg p-8">
+        <form class="space-y-6">
           <div>
-            <label class="block text-sm mb-2 ml-1">Your Name</label>
+            <label class="block text-sm font-medium mb-2">Your Name</label>
             <input
               type="text"
               placeholder="John Doe"
-              class="border-2 border-neutral w-full p-4 rounded-xl text-gray-200 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+              class="w-full p-4 rounded-xl bg-white/5 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
             />
           </div>
           <div>
-            <label class="block text-sm mb-2 ml-1">Your Email</label>
+            <label class="block text-sm font-medium mb-2">Your Email</label>
             <input
               type="email"
               placeholder="you@example.com"
-              class="border-2 border-neutral w-full p-4 rounded-xl text-gray-200 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+              class="w-full p-4 rounded-xl bg-white/5 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
             />
           </div>
           <div>
-            <label class="block text-sm mb-2 ml-1">Your Message</label>
+            <label class="block text-sm font-medium mb-2">Your Message</label>
             <textarea
               rows="4"
               placeholder="Tell us about your event..."
-              class="border-2 border-neutral w-full p-4 rounded-xl text-gray-200 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+              class="w-full p-4 rounded-xl bg-white/5 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
             ></textarea>
           </div>
           <button
             id="btn-send-msg"
-            class="w-full bg-white cursor-pointer text-primary font-semibold px-6 py-4 rounded-xl shadow hover:bg-gray-100 transition"
+            class="w-full bg-white text-primary font-semibold px-6 py-4 rounded-xl shadow hover:bg-gray-100 transition"
           >
             Send Message
           </button>
         </form>
       </div>
 
-      <!-- Info & Map Card -->
-      <div class="space-y-8 overflow-hidden">
-        <div
-          class="reveal bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-5 md:p-8"
-        >
-          <h3 class="text-2xl font-bold mb-2">Visit Us</h3>
-          <p class="text-gray-200">
-            456 Event Avenue, Lagos<br />
-            Monday - Friday, 9am - 6pm
-          </p>
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+          <ul class="space-y-3 text-gray-200">
+            <li>
+              <span class="font-semibold text-white">Email:</span>
+              hello@globalevents.com
+            </li>
+            <li>
+              <span class="font-semibold text-white">Phone:</span> +1 (555)
+              123-4567
+            </li>
+            <li>
+              <span class="font-semibold text-white">Hours:</span> Mon - Fri,
+              9am - 6pm (GMT)
+            </li>
+          </ul>
         </div>
-        <iframe
-          class="reveal w-full h-83 rounded-2xl shadow-xl"
-          src="https://maps.google.com/maps?q=lagos&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        ></iframe>
+
+        <!-- Map -->
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden"
+        >
+          <iframe
+            class="w-full h-64 rounded-2xl"
+            src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          ></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +100,6 @@
   sendMsgBtn.addEventListener("touchstart", (e) => {
     e.target.classList.add("bg-white/80");
   });
-
   sendMsgBtn.addEventListener("touchend", (e) => {
     e.target.classList.remove("bg-white/80");
   });

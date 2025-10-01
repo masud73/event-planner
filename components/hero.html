@@ -3,42 +3,56 @@
   <!-- Background image -->
   <img
     src="/event-planner/assets/images/hero.jpg"
-    alt="Event background"
+    alt="Luxury Event Background"
+    loading="lazy"
     class="absolute inset-0 w-full h-full object-cover"
   />
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black/70"></div>
+  <!-- Overlay with gradient -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-primary/80"
+  ></div>
 
   <!-- Content -->
-  <div class="relative max-w-5xl mx-auto px-6 py-35 text-center">
+  <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
     <!-- Small heading -->
     <p class="uppercase tracking-widest text-accent font-semibold mb-3">
-      Your Perfect Occasion
+      Exceptional Event Experiences
     </p>
     <!-- Main heading -->
     <h1
-      class="reveal text-4xl md:text-6xl font-extrabold text-neutral mb-6 leading-tight"
+      class="text-4xl md:text-6xl font-extrabold text-neutral mb-6 leading-tight"
     >
-      We Make Every Event Truly Unforgettable
+      Crafting Unforgettable Moments Worldwide
     </h1>
     <!-- Description -->
-    <p class="text-lg md:text-xl text-neutral leading-8 mb-8 max-w-2xl mx-auto">
-      Weddings, parties, conferences — whatever your vision, our expert planners
-      and creative designers will bring it to life.
+    <p
+      class="text-lg md:text-xl text-neutral/90 leading-8 mb-10 max-w-2xl mx-auto"
+    >
+      From luxury weddings to international conferences, we deliver seamless
+      planning and flawless execution trusted by clients across the globe.
     </p>
     <!-- CTA -->
-    <a
-      id="hero-btn"
-      href="#contact"
-      class="inline-block transition-colors duration-300 ease-in-out bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary/70"
-    >
-      Start Planning Today
-    </a>
+    <div class="flex justify-center gap-4">
+      <a
+        id="hero-btn"
+        href="#contact"
+        class="inline-block transition-all duration-300 ease-in-out bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:bg-accent hover:text-primary"
+      >
+        Start Planning Today
+      </a>
+      <a
+        href="#portfolio"
+        class="inline-block transition-all duration-300 ease-in-out border-2 border-accent text-accent px-8 py-4 rounded-xl text-lg font-semibold hover:bg-accent hover:text-primary"
+      >
+        View Our Portfolio
+      </a>
+    </div>
   </div>
 
+  <!-- Decorative Wave -->
   <svg
-    class="absolute bottom-0 w-full h-16 text-white block"
+    class="absolute bottom-0 w-full h-20 text-primary block"
     viewBox="0 0 1440 320"
     preserveAspectRatio="none"
   >
@@ -52,10 +66,9 @@
 <script>
   const heroBtn = document.getElementById("hero-btn");
   heroBtn.addEventListener("touchstart", (e) => {
-    e.target.classList.add("bg-primary/70");
+    e.target.classList.add("bg-primary", "text-accent");
   });
-
   heroBtn.addEventListener("touchend", (e) => {
-    e.target.classList.remove("bg-primary/70");
+    e.target.classList.remove("bg-primary", "text-accent");
   });
 </script>
